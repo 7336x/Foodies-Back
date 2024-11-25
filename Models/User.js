@@ -1,3 +1,4 @@
+const jwt = require("jsonwebtoken");
 const { model, Schema } = require("mongoose");
 
 const PasswordManager = require("../helpers/PasswordManager");
@@ -5,12 +6,6 @@ const PasswordManager = require("../helpers/PasswordManager");
 const UserSchema = new Schema({
   username: { type: String, required: true, unique: true },
   password: { type: String, required: true },
-  category: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Category",
-    },
-  ],
   recipe: [
     {
       type: Schema.Types.ObjectId,
