@@ -1,6 +1,6 @@
 const express = require("express");
 const morgan = require("morgan");
-
+const cors = require("cors");
 const { handleErrors, currentUser } = require("./middleware");
 const { NotFoundError } = require("./errors");
 
@@ -16,6 +16,7 @@ const app = express();
 /**
  * Middleware
  */
+app.use(cors());
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(currentUser);

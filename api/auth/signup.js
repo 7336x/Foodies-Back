@@ -24,6 +24,7 @@ router.post("/signup", validators, validateRequest, async (req, res, next) => {
 
   // Check for existing user
   const existingUser = await User.findOne({ username });
+  console.log(existingUser);
 
   if (existingUser) return next(BadRequestError("Username is taken"));
 
