@@ -5,7 +5,11 @@ const { handleErrors, currentUser } = require("./middleware");
 const { NotFoundError } = require("./errors");
 
 const { authRouter } = require("./api/auth");
-// const { postsRouter } = require("./routes/posts");
+const { categoryRouter } = require("./api/category/category.routers");
+const {
+  ingredientRouter,
+} = require("./api/ingrediants/ingrediants.controller");
+const { recipeRouter } = require("./api/recipe/recipe.controllers");
 
 const app = express();
 
@@ -15,6 +19,10 @@ const app = express();
 app.use(express.json());
 app.use(morgan("dev"));
 app.use(currentUser);
+
+app.use("/category", categoryRouter);
+app.use("/ingredients", ingredientRouter);
+app.use("/recipes", recipeRouter);
 
 /**
  * Routers
